@@ -42,7 +42,7 @@ jobs:
           echo "Build output looks complete."
 
       - name: Upload build (for review or manual deploy)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site-build
           path: build
