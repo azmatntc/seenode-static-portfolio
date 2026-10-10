@@ -361,7 +361,7 @@ export const contact = {
 	form: {
 		// Paste your Formspree (or compatible) endpoint here, e.g. 'https://formspree.io/f/xxxxxxx'.
 		// Empty = the form opens the visitor's email app with the message filled in.
-		endpoint: 'https://formspree.io/f/mjygrgnd',
+		endpoint: "https://formspree.io/f/mjygrgnd",
 		projectTypes: [
 			'New product build',
 			'API or integration',
