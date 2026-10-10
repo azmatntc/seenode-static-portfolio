@@ -1,0 +1,33 @@
+{
+	"name": "freelance-portfolio",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Static SvelteKit portfolio for a freelance full-stack developer",
+	"engines": {
+		"node": ">=20.19"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^3.0.1",
+		"@sveltejs/vite-plugin-svelte": "^7.3.1",
+		"@tailwindcss/vite": "^4.3.3",
+		"svelte": "^5.57.2",
+		"tailwindcss": "^4.3.3",
+		"vite": "^8.3.4"
+	},
+	"dependencies": {
+		"@fontsource-variable/bricolage-grotesque": "^5.3.0",
+		"@fontsource-variable/ibm-plex-sans": "^5.3.0",
+		"@fontsource-variable/jetbrains-mono": "^5.3.0"
+	},
+	"imports": {
+		"#lib/*": "./src/lib/*"
+	}
+}

@@ -1,0 +1,281 @@
+/* ──────────────────────────────────────────────────────────
+   Tailwind CSS v4 — configuration lives here, in CSS.
+
+   Colour system: each layer of the stack has one hue, taken from the
+   technology's own branding, and it is used consistently everywhere
+   (hero diagram, skills, project tags):
+     ui  = frontend  (Svelte orange)
+     api = backend   (Django green)
+     db  = databases (PostgreSQL blue)
+   "-ink" variants are darker, for text on light backgrounds (AA contrast).
+   "-glow" variants are lighter, for use on the dark panels.
+   ────────────────────────────────────────────────────────── */
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/ibm-plex-sans';
+@import '@fontsource-variable/jetbrains-mono';
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Bricolage Grotesque Variable', 'IBM Plex Sans Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+	/* Surfaces and text (light theme) */
+	--color-paper: #f4f6f9;
+	--color-surface: #ffffff;
+	--color-line: #d8dee8;
+	--color-ink: #0e1726;
+	--color-ink-soft: #3b475c;
+	--color-muted: #566277;
+	/* Solid buttons: dark on light, light on dark (flipped in the dark theme) */
+	--color-inverse: #0e1726;
+	--color-on-inverse: #ffffff;
+
+	/* Dark panels */
+	--color-night: #0b1322;
+	--color-night-2: #121d31;
+	--color-night-line: #24324b;
+	--color-mist: #c4cedd;
+	--color-mist-soft: #93a1b8;
+
+	/* Layer hues */
+	--color-ui: #ff3e00;
+	--color-ui-ink: #b82e00;
+	--color-ui-glow: #ff7a52;
+	--color-api: #1f9d6e;
+	--color-api-ink: #0c6b4a;
+	--color-api-glow: #3ddc97;
+	--color-db: #2f6fb5;
+	--color-db-ink: #245c99;
+	--color-db-glow: #6db3f2;
+
+	--animate-drift: drift 24s ease-in-out infinite alternate;
+	--animate-ping-soft: ping-soft 2.4s ease-out infinite;
+
+	@keyframes drift {
+		from { transform: translate3d(-5%, -3%, 0) scale(1); }
+		to { transform: translate3d(6%, 5%, 0) scale(1.15); }
+	}
+	@keyframes ping-soft {
+		0% { box-shadow: 0 0 0 0 rgb(31 157 110 / 0.5); }
+		80%, 100% { box-shadow: 0 0 0 9px rgb(31 157 110 / 0); }
+	}
+}
+
+/* ── Themes ───────────────────────────────────────────────────
+   Light is the default. The dark theme only re-maps the tokens that
+   change; set by an inline script in app.html before first paint.
+   Any element can opt back into a theme with data-theme="light|dark"
+   (used for the mock browser windows, which stay light in dark mode). */
+:root,
+[data-theme='light'] {
+	--color-paper: #f4f6f9;
+	--color-surface: #ffffff;
+	--color-line: #d8dee8;
+	--color-ink: #0e1726;
+	--color-ink-soft: #3b475c;
+	--color-muted: #566277;
+	--color-inverse: #0e1726;
+	--color-on-inverse: #ffffff;
+	--color-ui-ink: #b82e00;
+	--color-api-ink: #0c6b4a;
+	--color-db-ink: #245c99;
+	--grid-line: rgb(14 23 38 / 0.055);
+}
+[data-theme='dark'] {
+	--color-paper: #090f1c;
+	--color-surface: #111a2c;
+	--color-line: #243049;
+	--color-ink: #eef2f8;
+	--color-ink-soft: #b9c4d6;
+	--color-muted: #8f9db3;
+	--color-inverse: #eef2f8;
+	--color-on-inverse: #0b1322;
+	--color-ui-ink: #ff8a66;
+	--color-api-ink: #3ddc97;
+	--color-db-ink: #7dbaf5;
+	--grid-line: rgb(255 255 255 / 0.05);
+}
+
+/* ── Base ─────────────────────────────────────────────────── */
+html[data-theme='dark'] {
+	color-scheme: dark;
+}
+html {
+	color-scheme: light;
+	background-color: var(--color-paper);
+	scroll-padding-top: 5.5rem;
+}
+
+body {
+	background-color: var(--color-paper);
+	color: var(--color-ink-soft);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* In the base layer so Tailwind utilities (e.g. text-white on dark panels) can override it */
+@layer base {
+	h1, h2, h3 {
+		font-family: var(--font-display);
+		color: var(--color-ink);
+	}
+}
+
+::selection {
+	background: rgb(47 111 181 / 0.22);
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-db);
+	outline-offset: 3px;
+	border-radius: 0.375rem;
+}
+.on-dark :focus-visible {
+	outline-color: #ffffff;
+}
+
+/* ── Scroll reveal (driven by the `reveal` action) ───────────
+   Content is visible by default (no-JS and reduced-motion safe).
+   The action adds .reveal-init only to below-the-fold elements.  */
+.reveal-init {
+	opacity: 0;
+	transform: translate3d(0, var(--reveal-y, 24px), 0);
+	transition:
+		opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+		transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+		translate 0.3s ease,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease;
+	transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms, 0ms, 0ms;
+	will-change: opacity, transform;
+}
+.reveal-init.reveal-in {
+	opacity: 1;
+	transform: none;
+}
+
+/* Lines that draw themselves when their parent is revealed */
+.grow-x,
+.grow-y {
+	transition: transform 1.3s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
+}
+.grow-x { transform-origin: left; }
+.grow-y { transform-origin: top; }
+.reveal-init:not(.reveal-in) .grow-x { transform: scaleX(0); }
+.reveal-init:not(.reveal-in) .grow-y { transform: scaleY(0); }
+
+/* ── Pointer-driven effects (set by the spotlight / tilt actions) ── */
+.spot {
+	position: relative;
+	isolation: isolate;
+}
+.spot::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.35s ease;
+	background: radial-gradient(
+		var(--spot-size, 480px) circle at var(--mx, 50%) var(--my, 50%),
+		var(--spot-color, rgb(47 111 181 / 0.09)),
+		transparent 65%
+	);
+}
+.spot:hover::before {
+	opacity: 1;
+}
+
+.tilt {
+	transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+	transition:
+		transform 0.25s ease-out,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease;
+	will-change: transform;
+}
+
+/* ── Motion: only when the visitor has not asked for less ─── */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Hero headline: words rise out of a mask, one orchestrated entrance */
+	.word {
+		animation: word-rise 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+		animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+	}
+	@keyframes word-rise {
+		from { transform: translateY(112%); }
+		to { transform: none; }
+	}
+
+	/* Supporting hero content follows the headline */
+	.enter {
+		animation: enter 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		animation-delay: var(--enter-delay, 0ms);
+	}
+	@keyframes enter {
+		from { opacity: 0; transform: translate3d(0, 18px, 0); }
+		to { opacity: 1; transform: none; }
+	}
+
+	.menu-pop {
+		animation: menu-pop 0.22s ease-out both;
+	}
+	@keyframes menu-pop {
+		from { opacity: 0; transform: translateY(-8px); }
+		to { opacity: 1; transform: none; }
+	}
+
+	/* Mouse-wheel cue */
+	.scroll-dot {
+		animation: scroll-dot 1.9s ease-in-out infinite;
+	}
+	@keyframes scroll-dot {
+		0% { transform: translateY(0); opacity: 0; }
+		30% { opacity: 1; }
+		70% { opacity: 1; }
+		100% { transform: translateY(14px); opacity: 0; }
+	}
+}
+
+/* Belt and braces: collapse every animation and transition */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		animation-delay: 0ms !important;
+		transition-duration: 0.01ms !important;
+		transition-delay: 0ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ── Decorative helpers ───────────────────────────────────── */
+.word-mask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	padding-bottom: 0.14em;
+	margin-bottom: -0.14em;
+}
+.word {
+	display: inline-block;
+}
+
+.bg-blueprint {
+	background-image:
+		linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+	background-size: 48px 48px;
+	mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 25%, transparent 78%);
+	-webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 25%, transparent 78%);
+}
