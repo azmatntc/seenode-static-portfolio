@@ -66,7 +66,7 @@ export const resume = {
 export const about = {
 	title: 'A developer you can hand the whole product to',
 	// Put your photo at static/images/profile.jpg (square or 4:5, at least 800px wide), then set `photo` below.
-	photo: '',
+	photo: 'profile.jpg',
 	photoAlt: 'Portrait of Malik',
 	paragraphs: [
 		'I work with founders and teams who need a web product built properly: a clear data model, a secure Django backend, and a fast, accessible Svelte interface, all designed together instead of handed between three people.',
@@ -404,7 +404,7 @@ export const contact = {
 	form: {
 		// Paste your Formspree (or compatible) endpoint here, e.g. 'https://formspree.io/f/xxxxxxx'.
 		// Empty = the form opens the visitor's email app with the message filled in.
-		endpoint: '',
+		endpoint: 'https://formspree.io/f/mjygrgnd',
 		projectTypes: [
 			'New product build',
 			'API or integration',
