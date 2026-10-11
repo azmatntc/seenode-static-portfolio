@@ -319,35 +319,78 @@ export const projects = {
 /** Testimonials and client logos. Sample content: replace with real quotes (with permission). */
 export const testimonials = {
 	title: 'What clients say',
-	intro: '',
+	intro:
+		'Five different problems, one way of working: understand the business first, build it to hold up under real use, and explain every decision in plain language.',
+	// Sample quotes written to show the structure. Replace each with a real quote (with the
+	// client's permission), keep `project` pointing at the matching case-study slug, and set
+	// `placeholder: false` to remove the "Sample" badge.
 	items: [
 		{
 			quote:
-				'Replace this with a real quote from a client: what they needed, what you delivered, and what it was like to work with you.',
-			name: 'Client Name',
-			role: 'Role, Company',
+				'Hearing dates lived in diaries and WhatsApp groups, and twice in one year a date slipped through. Malik spent two days with our associates before writing any code, then drew our whole workflow back to us: matters, hearings, billing. What won the partners over was the access control. Juniors see only what they should, and every document view is logged. Month-end invoices went from most of two weeks to a single day, and nobody has missed a hearing since.',
+			name: 'A. Rehman',
+			role: 'Managing Partner, litigation firm, Lahore',
+			project: 'vakeel-desk',
+			result: '0 missed hearings, invoices in 1 day',
+			expertise: ['Permissions and audit trail', 'PostgreSQL', 'Workflow design'],
 			placeholder: true
 		},
 		{
-			quote: 'A second, shorter quote works well here. One or two sentences about the result.',
-			name: 'Client Name',
-			role: 'Role, Company',
+			quote:
+				'Launch week sent hundreds of people to the same few products. Malik had already thought about two shoppers buying the last item: stock is locked inside the database, so we have never oversold. The storefront stays quick on mobile data, which is where our customers are.',
+			name: 'Hira Shahid',
+			role: 'Co-founder, local marketplace',
+			project: 'dukandar-marketplace',
+			result: '120+ shops live in a quarter',
+			expertise: ['Transactions and stock safety', 'Performance on slow networks'],
 			placeholder: true
 		},
 		{
-			quote: 'A third quote about communication or reliability.',
-			name: 'Client Name',
-			role: 'Role, Company',
+			quote:
+				'He treated our product as if it were his own. Tenant isolation, invoice numbering, plan limits: he explained each trade-off in plain language and wrote the tests so we can change things without fear. I have not had a single data mix-up scare.',
+			name: 'Usman Tariq',
+			role: 'CTO, accounting software startup',
+			project: 'hisaab-billing-saas',
+			result: '600+ paying businesses',
+			expertise: ['Multi-tenant architecture', 'Automated testing'],
+			placeholder: true
+		},
+		{
+			quote:
+				'Nobody wanted to touch the old Oracle system. Malik left it alone, built a read-only pipeline beside it, and ran the old and new reports side by side for a full month-end until they matched to the rupee. That is what convinced my team. Our heaviest report now takes under a minute.',
+			name: 'Farah Naeem',
+			role: 'Head of Finance, manufacturing company',
+			project: 'oracle-reporting-modernisation',
+			result: '4 hours to 40 seconds',
+			expertise: ['Oracle and MySQL', 'Data reconciliation', 'Zero-downtime migration'],
+			placeholder: true
+		},
+		{
+			quote:
+				'Dispatchers used to phone every rider. Now they watch everyone on one live map. Malik told us up front what would struggle at 200 riders and fixed it before we noticed. His Friday updates were short, honest and free of jargon.',
+			name: 'Bilal Ahmed',
+			role: 'Operations Director, courier company',
+			project: 'rider-route-dispatch',
+			result: '25% faster deliveries',
+			expertise: ['Real-time systems', 'Clear communication'],
 			placeholder: true
 		}
+	],
+	// What clients tend to notice, shown as a short summary under the quotes.
+	themes: [
+		{ title: 'Understands the business first', text: 'Workflow mapped with the people who use it before any code is written.' },
+		{ title: 'Builds for real-world failure', text: 'Concurrency, permissions, slow networks and bad data are designed for, not patched later.' },
+		{ title: 'Proves it works', text: 'Tests, reconciliation and side-by-side runs, so you can trust the numbers.' },
+		{ title: 'Communicates plainly', text: 'Short, regular updates and trade-offs explained without jargon.' }
 	],
 	// Add `logo: '/images/clients/acme.svg'` to show a logo instead of the name.
 	clientsLabel: 'Worked with',
 	clients: [
-		{ name: 'Client one', logo: '' },
-		{ name: 'Client two', logo: '' },
-		{ name: 'Client three', logo: '' },
-		{ name: 'Client four', logo: '' }
+		{ name: 'Litigation firm, Lahore', logo: '' },
+		{ name: 'Local marketplace', logo: '' },
+		{ name: 'Accounting software', logo: '' },
+		{ name: 'Manufacturing', logo: '' },
+		{ name: 'Courier and logistics', logo: '' }
 	],
 	clientsPlaceholder: true
 };
