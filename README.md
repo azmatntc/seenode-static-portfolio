@@ -28,6 +28,7 @@ Everything editable lives in **`src/lib/content.js`**. Items marked `placeholder
 | **Case studies** (also generate `/work/<slug>/` pages) | `src/lib/case-studies.js` (5 detailed samples) and `projects.items` (4 short placeholders: delete or replace) |
 | Project screenshots | put images in `static/images/projects/`, set `image` / `screens` |
 | Testimonials and client logos | `testimonials` |
+| Cloud, SEO and security section (pillars, proof, review offer) | `assurance` |
 | **CV** | replace `static/resume.pdf` with your own file |
 | **Contact form delivery** | paste a Formspree-style endpoint into `contact.form.endpoint` |
 | **Booking link** (Cal.com, Calendly) | `contact.booking.href` (empty = button hidden) |
@@ -44,6 +45,7 @@ With no endpoint set, the form validates the input and then opens the visitor's 
 
 - **Hero:** animated request-flow diagram (browser → Django → database), word-by-word headline entrance, live local-time badge, CV download.
 - **Sections:** About, Skills, Services and engagement models, Process (scroll-linked timeline), Projects, Testimonials, Contact.
+- **Cloud, SEO and security section:** three pillars (what I do, how a client can verify it) and a proof strip. The figures in the proof strip were measured on this site, so re-check them (Lighthouse, axe) after you change the design or content.
 - **Case-study pages** for every project, prerendered as static files, with next-project navigation. Five detailed samples (law-firm platform, local marketplace, billing SaaS, Oracle reporting migration, live delivery dispatch) show the full structure: problem, approach, hardest challenge, how each technology was used, features, result and metrics. The sample client names and figures are illustrative: replace them with your real work.
 - **Light and dark theme** with a toggle. It follows the visitor's system setting by default, remembers their choice, and applies before first paint (no flash).
 - **SEO:** per-page titles and canonical URLs, Open Graph and Twitter cards, JSON-LD structured data, `sitemap.xml`, `robots.txt`, favicons, web manifest.

@@ -6,6 +6,7 @@
 	import Process from '#lib/components/Process.svelte';
 	import Projects from '#lib/components/Projects.svelte';
 	import Testimonials from '#lib/components/Testimonials.svelte';
+	import Assurance from '#lib/components/Assurance.svelte';
 	import Contact from '#lib/components/Contact.svelte';
 </script>
 
@@ -16,4 +17,5 @@
 <Process />
 <Projects />
 <Testimonials />
+<Assurance />
 <Contact />

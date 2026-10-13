@@ -21,7 +21,7 @@ export const site = {
 	// IMPORTANT: replace with your real domain after deploying (no trailing slash).
 	// It is used for the canonical URL, social previews, sitemap and structured data.
 	url: 'https://your-site.seenode.app',
-	email: 'hello@example.com',
+	email: 'azmatntc@gmail.com',
 	// IANA time zone, used for the live local-time badge in the hero.
 	timezone: 'Asia/Karachi',
 	timezoneLabel: 'PKT (UTC+5)',
@@ -66,7 +66,7 @@ export const resume = {
 export const about = {
 	title: 'A developer you can hand the whole product to',
 	// Put your photo at static/images/profile.jpg (square or 4:5, at least 800px wide), then set `photo` below.
-	photo: '',
+	photo: 'profile.jpg',
 	photoAlt: 'Portrait of Malik',
 	paragraphs: [
 		'I work with founders and teams who need a web product built properly: a clear data model, a secure Django backend, and a fast, accessible Svelte interface, all designed together instead of handed between three people.',
@@ -386,13 +386,95 @@ export const testimonials = {
 	// Add `logo: '/images/clients/acme.svg'` to show a logo instead of the name.
 	clientsLabel: 'Worked with',
 	clients: [
-		{ name: 'Litigation firm, Lahore', logo: '' },
-		{ name: 'Local marketplace', logo: '' },
-		{ name: 'Accounting software', logo: '' },
-		{ name: 'Manufacturing', logo: '' },
-		{ name: 'Courier and logistics', logo: '' }
+		{ name: 'Litigation firm, Lahore', logo: 'legal-access.svg' },
+		{ name: 'Local marketplace', logo: 'marketplace-svgrepo-com.svg' },
+		{ name: 'Accounting software', logo: 'telephone-booth-svgrepo.svg.svg' },
+		{ name: 'Manufacturing', logo: 'Litigation.svg' },
+		{ name: 'Courier and logistics', logo: 'delivery.svg' }
 	],
 	clientsPlaceholder: true
+};
+
+/**
+ * "Cloud, SEO and security" section. Each pillar says what I do, then how the client can
+ * verify it, so the claims are checkable and not just adjectives.
+ * `layer` only picks the accent colour: 'ui' (orange), 'api' (green) or 'db' (blue).
+ */
+export const assurance = {
+	title: 'Built to run well, rank well and stay safe',
+	intro:
+		'A site is only finished when it is fast to find, cheap to run and hard to break. I handle all three as part of the build, and I show you the evidence at each step.',
+	pillars: [
+		{
+			id: 'cloud',
+			layer: 'db',
+			title: 'Cloud management and cost control',
+			promise: 'You pay for what the product needs, not for idle servers or guesswork.',
+			does: [
+				'Right-size first: I measure real traffic, memory and query load, start on the smallest plan that meets the target, and scale on evidence.',
+				'Static wherever possible: pages that do not change per visitor are pre-built and served from a CDN, so there is no server to patch or pay for.',
+				'Database tuning before bigger hardware: indexes, query review, summary tables and connection pooling. One reporting job fell from hours to seconds this way.',
+				'Caching and compression: fingerprinted assets cached for a year, optimised images, small JavaScript bundles.',
+				'Budgets and alerts from day one, resources labelled by project, and a short monthly cost review.',
+				'Deploys from Git through CI, so every release is repeatable and a bad one is undone by reverting a commit.'
+			],
+			verify:
+				'You get a written monthly cost estimate before launch and a simple cost line after it. Rollback is one revert, and I show you how.'
+		},
+		{
+			id: 'seo',
+			layer: 'ui',
+			title: 'Website SEO that you can measure',
+			promise: 'Search engines can find, read and trust every page, and visitors are not kept waiting.',
+			does: [
+				'Technical foundations: semantic HTML, one clear heading structure, canonical URLs, XML sitemap, robots rules and clean, stable URLs.',
+				'Structured data (JSON-LD) so search engines understand who you are, what you offer and what each page is about.',
+				'Core Web Vitals: fast first paint, no layout jumps, self-hosted fonts and lazy-loaded images.',
+				'Social previews (Open Graph and Twitter cards), so shared links look professional.',
+				'Local and bilingual search: local business details, and English and Urdu pages linked correctly where you need both.',
+				'Measurement: Search Console set up and privacy-friendly analytics, so we see which pages bring enquiries.'
+			],
+			verify:
+				'I send a before-and-after Lighthouse and crawl report. I cannot promise a number-one ranking, since nobody honestly can, but every fix inside my control is documented.'
+		},
+		{
+			id: 'security',
+			layer: 'api',
+			title: 'Layered security for sites and web apps',
+			promise: 'No system is unhackable. I make yours hard to attack, quick to notice problems in and easy to recover.',
+			does: [
+				'Framework protections switched on and tested: CSRF, XSS escaping, SQL-injection-safe queries, clickjacking and secure-cookie settings, and a deployment check before launch.',
+				'Access you can trust: strong password hashing, login rate limits, optional two-factor sign-in, least-privilege roles and an audit trail of who changed what.',
+				'Data protection: HTTPS everywhere, secrets kept out of the code, minimal database permissions, tenant isolation tests and encrypted backups.',
+				'Supply chain: locked dependencies, automated update pull requests, a vulnerability audit in CI, and a protected main branch that only accepts reviewed, passing changes.',
+				'Hardening: security headers, validated uploads, spam traps and rate limits on forms and APIs.',
+				'Recovery: logs and alerts, backups whose restore I have actually tested, and a short incident checklist for your team.'
+			],
+			verify:
+				'You get an OWASP Top 10 checklist with a pass or fix note against each item, plus the backup restore test result.'
+		}
+	],
+	proof: {
+		title: 'The evidence is on this very site',
+		intro: 'I hold my own portfolio to the same standard I apply to client work. You can check every line below yourself.',
+		items: [
+			{ value: '100 / 100 / 100', label: 'Lighthouse accessibility, best practices and SEO (lab test of this site)' },
+			{ value: '0 violations', label: 'axe-core accessibility scan, in both light and dark themes' },
+			{ value: '0 trackers', label: 'No cookies, no third-party requests when a page loads, fonts self-hosted' },
+			{ value: 'Every change reviewed', label: 'Pull request, automated build, output checks and dependency audit before it goes live' }
+		],
+		points: [
+			'Each case study is its own pre-built page, with a sitemap, canonical links and structured data.',
+			'Updates arrive as automated pull requests and must pass the same checks as my own changes.',
+			'The whole site is static files, so there is no server to hack and almost nothing to pay for.'
+		]
+	},
+	cta: {
+		title: 'Not sure where your site stands?',
+		text: 'I offer a fixed-scope launch readiness review: cloud costs, SEO and security checked against a written checklist, with a clear list of fixes in priority order.',
+		label: 'Ask for a review',
+		href: '/#contact'
+	}
 };
 
 export const contact = {
@@ -404,7 +486,7 @@ export const contact = {
 	form: {
 		// Paste your Formspree (or compatible) endpoint here, e.g. 'https://formspree.io/f/xxxxxxx'.
 		// Empty = the form opens the visitor's email app with the message filled in.
-		endpoint: '',
+		endpoint: 'https://formspree.io/f/xjygedoz',
 		projectTypes: [
 			'New product build',
 			'API or integration',
@@ -416,8 +498,8 @@ export const contact = {
 	},
 	// Add or remove links. Entries with an empty `href` are not shown.
 	socials: [
-		{ label: 'GitHub', href: '' },
-		{ label: 'LinkedIn', href: '' }
+		{ label: 'GitHub', href: 'https://github.com/azmatntc' },
+		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/malik-abbas-a682061ab' }
 	]
 };
 
